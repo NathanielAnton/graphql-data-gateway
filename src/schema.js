@@ -10,10 +10,12 @@ export const typeDefs = gql`
   }
 
   type Query {
-    profiles(name: String, role: String, available: Boolean): [Profile!]!
+    profiles(id : ID, name: String, role: String, available: Boolean): [Profile!]!
   }
 
   type Mutation {
     createProfile(name: String!, role: String!, available: Boolean!): Profile!
+    updateProfile(id: ID!, name: String, role: String, available: Boolean): Profile!
+    deleteProfile(id: ID!): Profile!
   }
 `;
