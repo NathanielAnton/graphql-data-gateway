@@ -1,2 +1,2 @@
 # graphql-data-gateway
-Projet de démonstration : un backend GraphQL (TypeScript + Apollo + Prisma)
+Projet de démonstration : un backend GraphQL (NodeJS + Apollo + Prisma)
