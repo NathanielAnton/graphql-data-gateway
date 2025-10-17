@@ -13,11 +13,31 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Profile {
+model Event {
+  id        Int       @id @default(autoincrement())
+  name      String
+  date      DateTime
+  location  String?
+  bookings  Booking[]
+  createdAt DateTime  @default(now())
+}
+
+model Booking {
   id        Int      @id @default(autoincrement())
+  profile   Profile  @relation(fields: [profileId], references: [id])
+  profileId Int
+  event     Event    @relation(fields: [eventId], references: [id])
+  eventId   Int
+  status    String   @default("BOOKED")
+  createdAt DateTime @default(now())
+}
+
+model Profile {
+  id        Int       @id @default(autoincrement())
   name      String
   role      String
-  available Boolean  @default(true)
-  createdAt DateTime @default(now())
+  available Boolean
+  createdAt DateTime  @default(now())
+  bookings  Booking[]
 }
 
